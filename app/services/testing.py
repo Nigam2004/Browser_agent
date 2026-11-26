@@ -1,6 +1,7 @@
 import asyncio
 import os
-
+import re
+from app.services.date_picker import select_date_picker
 from dotenv import load_dotenv
 from playwright.async_api import async_playwright
 
@@ -88,25 +89,26 @@ async def open_mantra_portal():
             await page.locator("#MiddleName").press_sequentially("")
             await page.locator("#LastName").press_sequentially("bisoyi",delay=500)
             await page.get_by_role("textbox", name="Contact Number*").fill("7606995528")
-##DBand DOJ 
+            ##gender selection
+            # await page.locator("#divGender").get_by_role("link", name="Please Select").click()
+            # await page.get_by_role("combobox", name="Gender", exact=True).fill("Male")
+            # await page.locator("#select2-result-label-70").click()
+            #dob date picker
+            # await page.get_by_role("textbox", name="Date Of Birth*").click()
+            await select_date_picker(page, "01/04/2004","#DOB")
+            #doj date picker
+            await select_date_picker(page, "12/11/2026","#DOJ")
+            #doj date picker
+            await page.get_by_role("textbox", name="Date Of Deployment*").click()
+            #old gate pass fill
             await page.get_by_role("textbox", name="Old Gate-Pass Id**").fill(" ")
+            #father name fill
             await page.get_by_role("textbox", name="Father Name*").fill("SANU PRADHAN")
+            #marital status selection
             await page.locator("#s2id_MaritalStatus").get_by_role("link", name="Please Select").click()
-            # await page.get_by_role("combobox", name="Marital Status*").click()
+            await page.get_by_role("combobox", name="Marital Status*").click()
             await page.get_by_role("combobox", name="Marital Status*").fill("married")
             await page.locator("#select2-result-label-68").click()
-            # await page.locator("#s2id_MaritalStatus").get_by_role("link", name="Married").click()
-            # await page.get_by_role("combobox", name="Marital Status*").press("Enter")
-            # await page.locator("#divCompCode").get_by_role("link", name="JINDAL STEEL ODISHA").click()
-            # await  page.locator("#s2id_CompanyLocation").get_by_role("link", name="Angul(JSO)").click()
-            # await page.locator("#s2id_Plant > .select2-choice").get_by_role("link", name="Iron").click   ()
-            # await page.locator("#divEntityType").get_by_role("link", name="WORKER", exact=True).click()
-            # await page.locator("#s2id_Designation").get_by_role("link", name="HR").click()
-            # await page.locator("#s2id_Shift > .select2-choice").get_by_role("link", name="Shift G").click()
-            # await page.get_by_role("link", name="PF Avail").click()
-            # await page.get_by_role("textbox", name="PF Member ID*").fill("apkp1234567890")
-            # await page.get_by_role("textbox", name="UAN *").fill("1234567890")
-            # await page.get_by_role("link", name="B+").click()
             print("Current URL:", page.url)
             print("Page title:", await page.title())
             # Keep browser open for inspection

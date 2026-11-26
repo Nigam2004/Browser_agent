@@ -1,4 +1,4 @@
-def test_example(page: Page) -> None:
+
     page.locator("#AadharCard").click()
     page.locator("#AadharCard").fill("356920556096")
     page.once("dialog", lambda dialog: dialog.dismiss())
