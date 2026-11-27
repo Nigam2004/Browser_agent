@@ -193,6 +193,109 @@ async def open_mantra_portal():
             await page.locator("#Experienceyrs").fill("2")
             await page.locator("#Experiencemon").fill("2")
             await page.wait_for_timeout(2000)
+            #living stay
+            await page.locator("#s2id_LivingStay > .select2-choice").click()
+            await page.locator("#s2id_autogen39_search").fill("rented")
+            await page.locator("#s2id_autogen39_search").press("Enter")
+            await page.wait_for_timeout(2000)
+            #famili planing
+            await page.locator("#s2id_FamilyPlanning").get_by_role("link", name="Please Select").click()
+            await page.locator("#s2id_autogen40_search").fill("yes")
+            await page.locator("#s2id_autogen40_search").press("Enter")
+            await page.wait_for_timeout(2000)
+            #children details
+            await page.locator("#s2id_NumberOfChildren").get_by_role("link", name="Please Select").click()
+            await page.locator("#s2id_autogen45_search").fill("2")
+            await page.locator("#s2id_autogen45_search").press("Enter")
+            
+            #religion
+            await page.locator("#s2id_Religion").get_by_role("link", name="Please Select").click()
+            await page.locator("#s2id_autogen51_search").fill("hindu")
+            await page.locator("#s2id_autogen51_search").press("Enter")
+            await page.wait_for_timeout(2000)
+            #caste selection
+            await page.get_by_text("Caste * Please Select").click()
+            await page.locator("#s2id_autogen52_search").fill("obc")
+            await page.locator("#s2id_autogen52_search").press("Enter")
+            await page.wait_for_timeout(2000)
+            #police verification
+            await page.locator("#s2id_PoliceVerification").get_by_role("link", name="Please Select").click()
+            await page.locator("#s2id_autogen53_search").fill("no")
+            await page.locator("#s2id_autogen53_search").press("Enter")
+            #mobile allow
+            await page.locator("#s2id_MobileAllowed").get_by_role("link", name="Please Select").click()
+            await page.locator("#s2id_autogen54_search").fill("no")
+            await page.locator("#s2id_autogen54_search").press("Enter")
+            #land type
+            await page.get_by_text("Land Type Please Select Land").click()
+            await page.locator("#s2id_autogen55_search").fill("other")
+            await page.locator("#s2id_autogen55_search").press("Enter")
+            #week off
+            await page.locator("#DivWeekoff1").get_by_role("link", name="Please Select").click()
+            await page.locator("#s2id_autogen30_search").fill("sunday")
+            await page.locator("#s2id_autogen30_search").press("Enter")
+            #skill catagory
+            await page.locator("#s2id_SkillCategory > .select2-choice").click()
+            await page.locator("#s2id_autogen31_search").fill("skilled")
+            await page.locator("#s2id_autogen31_search").press("Enter")
+            #vaccine details
+            await page.get_by_text("Covid19 Vaccine Please Select").click()
+            await page.locator("#s2id_autogen50_search").fill("covaxin")
+            await page.locator("#s2id_autogen50_search").press("Enter")
+            #wage information
+            await page.get_by_text("Wage Type* Please Select Wage").click()
+            await page.locator("#s2id_autogen56_search").fill("monthly")
+            await page.locator("#s2id_autogen56_search").press("Enter")
+            await page.get_by_role("spinbutton", name="Amount*").fill("20000")
+            await page.get_by_role("spinbutton", name="Minimum Wages Per Day*").fill("580")
+            await page.locator("#WageSpecialAllowance").fill("0")
+            await page.wait_for_timeout(2000)
+            #present address
+            await page.get_by_text("Present Country* Please").click()
+            await page.locator("#s2id_autogen36_search").fill("india")
+            await page.locator("#s2id_autogen36_search").press("Enter")
+            await page.wait_for_timeout(1000)
+            await page.get_by_text("Present State* Please").click()
+            await page.locator("#s2id_autogen35_search").fill("odisha")
+            await page.locator("#s2id_autogen35_search").press("Enter")
+            await page.wait_for_timeout(1000)
+            await page.get_by_text("Present District Present").click()
+            await page.locator("#s2id_autogen61_search").fill("angul")
+            await page.locator("#s2id_autogen61_search").press("Enter")
+            await page.locator("#PresAddress").fill("mathura,polasara")
+            await page.locator("#PresentVillage").fill("mathura")
+            await page.get_by_role("textbox", name="Present Village* Present").fill("polasara")
+            await page.get_by_role("textbox", name="Present Post*").fill("mathura")
+            await page.locator("#PresPincode").fill("761105")
+            # same as present addres 
+            # await page.locator("#chkSameAsPresent").click()
+            #permanent address
+            await page.get_by_text("Permanent Country Please").click()
+            await page.locator("#s2id_autogen37_search").fill("india")
+            await page.locator("#s2id_autogen37_search").press("Enter")
+            await page.wait_for_timeout(1000)
+            await page.get_by_text("Permanent State* Permanent").click()
+            await page.locator("#s2id_autogen38_search").fill("odisha")
+            await page.locator("#s2id_autogen38_search").press("Enter")
+            await page.wait_for_timeout(1000)
+            await page.get_by_text("Permanent District* Permanent").click()
+            await page.locator("#s2id_autogen60_search").fill("angul")
+            await page.locator("#s2id_autogen60_search").press("Enter")
+            await page.get_by_role("textbox", name="Permanent Address").fill("mathura,polasara")
+            await page.get_by_role("textbox", name="Permanent Village*").fill("mathura")
+            await page.get_by_role("textbox", name="Permanent Tehsil*").fill("polasara")
+            await page.get_by_role("textbox", name="Permanent Post*").fill("mathura")
+            await page.locator("#PrmPincode").fill("761105")
+            #choose picture
+            await page.get_by_role("button", name="Choose File").set_input_files("images\Screenshot 2026-11-25 114113.png")
+
+            #select documentupload
+            await page.locator("#s2id_Document > .select2-choice").click()
+            await page.locator("#s2id_autogen27_search").fill("adhar")
+            await page.locator("#s2id_autogen27_search").press("Enter")
+            await page.get_by_text("Upload Document *").set_input_files("images\khageswar off.pdf")
+            await page.get_by_title("Upload Document").click()
+
 
 
             print("Current URL:", page.url)
